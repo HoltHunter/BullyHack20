@@ -4,30 +4,35 @@
 <title>ACE in Action</title>
     <!-- Bootstrap -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/grayscale.min.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 </head>
-<body>
+<body class="bg-light">
 <div class="container">
   <div class="row h-100">
       <div class="col-sm-12">
-      <div class="card my-5">
-        <div class="card-header">
-          <div class="text-center ">
+      <div class="card my-5 border-0">
+        <div class="card-header bg-editor">
+          <div class="text-center text-light">
             <h4>Code Editor</h4>
           </div>
           <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">projectName</a>
+            <li class="nav-item ">
+              <a class="nav-link active text-light bg-dark shadow border-0" href="#">projectName</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">project2</a>
+              <a class="nav-link shadow" href="#">project2</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">project3</a>
+              <a class="nav-link" href="#" tabindex="-1">project3</a>
             </li>
           </ul>
         </div>
-        <div class="card-body"    >
-          <div id="editor"></div>
+        <div class="card-body" id="editor">
         </div>
       </div>
     </div>
@@ -39,12 +44,13 @@
   <script src="../ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
   <script>
   var editor2 = ace.edit("editor", {
-      theme: "ace/theme/cobalt",
+      theme: "ace/theme/vibrant_ink",
       mode: "ace/mode/python",
       autoScrollEditorIntoView: true,
       maxLines: 30,
       minLines: 30
   });
+
   </script>
 
 
@@ -52,5 +58,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/grayscale.min.js"></script>
 </body>
 </html>
