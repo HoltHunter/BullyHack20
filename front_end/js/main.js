@@ -1,6 +1,6 @@
 
 var editor = ace.edit("editor", {
-      theme: "ace/theme/cobalt",
+      theme: "ace/theme/vibrant_ink",
       mode: "ace/mode/python",
       autoScrollEditorIntoView: true,
       maxLines: 30,
