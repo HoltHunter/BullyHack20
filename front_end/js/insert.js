@@ -1,5 +1,6 @@
 substitutions = {
     "space": " ",
+    "tab": "    ",
     "hash": "#",
     "dot": ".",
     "minus": "-",
@@ -26,7 +27,9 @@ substitutions = {
     "ampersand": "&",
     "closed": ")",
     "begin": "{",
-    "end": "}"
+    "end": "}",
+    "slash": "/",
+    "escape": "\\"
 };
 
 var insertions = [];
