@@ -42,7 +42,7 @@ voiceRecognition.onresult = processStream;
 
 // Copy all of the program's code
 copyCode = function() {
-    var current_selection = editor.session.selection;
+    var current_selection = editor.getSelection();
     // Select all
     editor.selectAll();
 
@@ -50,9 +50,7 @@ copyCode = function() {
     document.execCommand("copy");
 
     // Return selection
-    editor.session.selection = current_selection;
-
-    console.log("copied!");
+    editor.clearSelection();
 }
 
 
