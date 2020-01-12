@@ -55,12 +55,15 @@ copyCode = function() {
 
 
 $(document).ready(function() {
+    const element =  document.querySelector('#start')
     $("#start").click(function(event) {
         voiceRecognition.start();
+        element.classList.add('animated', 'pulse', 'infinite');
     });
 
     $("#stop").click(function(event) {
         voiceRecognition.stop();
+        element.classList.remove('animated', 'pulse', 'infinite');
     });
 
     $("#copy").click(function(event) {
