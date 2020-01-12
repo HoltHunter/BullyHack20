@@ -34,7 +34,12 @@ var insertions = [];
 var cut_transcript = 0;
 
 translate = function (transcript) {
+    // Special flags
+    var caps = false; 
+    var shift = false;
+
     actual_script = "";
+    // For each word
     transcript.split(" ").forEach(function(word, index) {
         word = word.toLowerCase();
         // Handle common substitions
@@ -42,7 +47,25 @@ translate = function (transcript) {
             actual_script += substitutions[word];
         }
         else {
-            actual_script += word;
+            // Handle captalization
+            if (caps) {
+                // Capitalize first letter
+                word = word.charAt(0).toUpperCase() + word.slice(1);
+                caps = false;
+            }
+            if (shift) {
+                // Capitalize the whole word
+                word = word.toUpperCase();
+                shift = false;
+            }
+
+            // Handle flags
+            if (word == "cap" || word == "capital")
+                caps = true;
+            else if (word == "caps")
+                shift = true;
+            else
+                actual_script += word;
         }
     });
 
