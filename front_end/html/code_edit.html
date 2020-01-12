@@ -7,6 +7,7 @@
     <link href="../css/grayscale.min.css" rel="stylesheet">
     <link href="../css/animate.min.css" rel="stylesheet">
     <link href="../css/main.css" rel="stylesheet">
+    <link href="../css/wave.css" rel="stylesheet">
 
     <link href="../css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
@@ -16,7 +17,8 @@
 <div class="container-fluid full-width">
   <div id="front-page" class="row text-center">
     <div class="col text-light my-auto">
-      <img src="../assets/img/logo.png" alt="logo">
+      <img src="../assets/svg/logo.svg" alt="logo">
+
       <h1 id="home-text" class="animated my-5 fadeInUp delay-1s">The code editor that listens to you.</h1>
       <a href="#edit" id="start-button" class="btn btn-outline-success ">Get Started</a>
     </div>
@@ -27,9 +29,10 @@
         <div class="card-header bg-editor">
           <div class="text-center text-light">
             <img id="logo" src="../assets/img/logo.png" alt="logo">
+
           </div>
           <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item ">
+            <li class="nav-item">
               <a class="nav-link active text-light bg-dark shadow border-0" href="#">projectName</a>
             </li>
             <li class="nav-item">
@@ -43,24 +46,42 @@
         <div class="card-body" id="editor">
         </div>
         <div class="card-footer bg-secondary">
-            <button type="button" class="btn btn-success" id="start">Listen</button>
-            <button type="button" class="btn btn-danger invisible" id="stop">Stop</button>
-            <div class="float-right">
-                <button type="button" class="btn btn-success" id="copy">Copy Code</button>
-                <div id="mode" class="btn-group btn-group-toggle" data-toggle="buttons">
-                  <label class="btn btn-info" id="insert">
-                    <input type="radio" name="options" id="option1" autocomplete="off" checked id="insert-check">Insert
-                  </label>
-                  <label class="btn btn-info" id="normal">
-                    <input type="radio" name="options" id="option2" autocomplete="off" id="normal-check">Normal
-                  </label>
+            <div class="row">
+              <div class="col-sm-4">
+                <button type="button" class="btn btn-success" id="start">Start</button>
+                <button type="button" class="btn btn-danger" id="stop">Stop</button>
+              </div>
+              <div class="col-sm-4 bg-dark align-center my-auto">
+                <div id="wave-wrapper">
+                  <span class="wave"></span>
+                  <span class="wave"></span>
+                  <span class="wave"></span>
+                  <span class="wave"></span>
+                  <span class="wave"></span>
                 </div>
+              </div>
+                <div class="col-sm-4">
+                <div id="toggle-buttons" class="float-right">
+                    <button type="button" class="btn btn-success" id="copy">Copy Code</button>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                      <label class="btn btn-info">
+                        <input type="radio" name="options" id="option1" autocomplete="off" checked id="insert-check" onchange="modeToggle()">Insert
+                      </label>
+                      <label class="btn btn-info">
+                        <input type="radio" name="options" id="option2" autocomplete="off" id="normal-check" onchange="modeToggle()">Normal
+                      </label>
+                    </div>
+                </div>
+              </div>
             </div>
+
+
         </div>
       </div>
     </div>
   </div>
-  <div class="row h-100">
+  <div class="row">
+
     </div>
 </div>
 
