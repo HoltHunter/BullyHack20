@@ -29,6 +29,7 @@ processStream = function (event) {
         }
         else {
             if (mode == "insert") insertInterim(rec_result[0].transcript, editor);
+            if (mode == "normal") normalInterim(rec_result[0].transcript, editor);
         }
     }
 }

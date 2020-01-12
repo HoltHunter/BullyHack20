@@ -135,7 +135,12 @@ normalFinal = function(command, editor) {
     // Get luis response
     translateCommand(text2num(command), processLuis);
 
-    session = editor.getSession();
-
+    // Update visualization
+    $("#normal-output").html('<span class="text-success">'+
+        command+'</span>');
 };
 
+normalInterim = function(command, editor) {
+    command = command.toLowerCase().trim();
+    $("#normal-output").html(command);
+};
