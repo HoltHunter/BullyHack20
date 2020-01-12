@@ -60,15 +60,20 @@ copyCode = function() {
 
 
 $(document).ready(function() {
-    const element =  document.querySelector('#start')
+    const start =  document.querySelector('#start')
+    const stop =  document.querySelector('#stop')
     $("#start").click(function(event) {
         voiceRecognition.start();
-        element.classList.add('animated', 'pulse', 'infinite');
+        start.classList.add('animated', 'pulse', 'infinite');
+        stop.classList.remove('invisible', 'zoomOut');
+        stop.classList.add('animated', 'zoomIn');
     });
 
     $("#stop").click(function(event) {
         voiceRecognition.stop();
-        element.classList.remove('animated', 'pulse', 'infinite');
+        start.classList.remove('animated', 'pulse', 'infinite');
+        stop.classList.remove('zoomIn');
+        stop.classList.add('zoomOut');
     });
 
     $("#copy").click(function(event) {
