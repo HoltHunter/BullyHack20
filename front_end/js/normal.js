@@ -147,7 +147,7 @@ normalFinal = function(command, editor) {
     translateCommand(text2num(command), processLuis);
 
     // Update visualization
-    $("#normal-output").html('<span class="text-success">'+
+    $("#normal-output").html('<span class="text-white">'+
         command+'</span>');
 };
 

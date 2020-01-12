@@ -29,3 +29,7 @@ html {
 #home-text {
   font-style: oblique;
 }
+
+#normal-output {
+  margin-top: 13px;
+}

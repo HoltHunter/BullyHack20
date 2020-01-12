@@ -64,13 +64,17 @@ $(document).ready(function() {
     const start =  document.querySelector('#start')
     const stop =  document.querySelector('#stop')
     const wave = document.querySelector('#wave-wrapper')
+    const message = document.querySelector('#normal-output')
+
+
     $("#start").click(function(event) {
         voiceRecognition.start();
         start.classList.add('animated', 'pulse', 'infinite');
         stop.classList.remove('invisible', 'zoomOut');
         stop.classList.add('animated', 'zoomIn');
-        wave.classList.remove('invisible');
+        wave.classList.remove('invisible', 'zoomOut');
         wave.classList.add('animated', 'zoomIn')
+        message.classList.remove('invisible', 'zoomOut');
     });
 
 
@@ -80,8 +84,10 @@ $(document).ready(function() {
         start.classList.remove('animated', 'pulse', 'infinite');
         stop.classList.remove('zoomIn');
         stop.classList.add('zoomOut');
-        wave.classList.add('invisible');
-        wave.classList.remove('animated', 'zoomIn')
+        wave.classList.remove('zoomIn')
+        wave.classList.add('zoomOut');
+        message.classList.add('animated', 'zoomOut');
+        //wave.classList.add('invisible');
     });
 
     $("#copy").click(function(event) {
