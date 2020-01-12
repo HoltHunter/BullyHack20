@@ -15,13 +15,15 @@ processStream = function (event) {
     var text_out = rec_result[0].transcript;
     var confidence = rec_result[0].confidence;
 
-    if (rec_result.isFinal) {
-        console.log("FINAL");
+    if (confidence > 0.5) {
+        if (rec_result.isFinal) {
+            console.log("FINAL");
 
-        if (mode == "insert") insertFinal(rec_result[0].transcript, editor);
-    }
-    else {
-        if (mode == "insert") insertInterim(rec_result[0].transcript, editor);
+            if (mode == "insert") insertFinal(rec_result[0].transcript, editor);
+        }
+        else {
+            if (mode == "insert") insertInterim(rec_result[0].transcript, editor);
+        }
     }
 }
 

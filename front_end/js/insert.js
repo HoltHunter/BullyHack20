@@ -24,8 +24,14 @@ substitutions = {
     "not": "!",
     "and": "&",
     "ampersand": "&",
-    "closed": ")"
+    "closed": ")",
+    "begin": "{",
+    "end": "}"
 };
+
+var insertions = [];
+
+var cut_transcript = 0;
 
 translate = function (transcript) {
     actual_script = "";
@@ -43,21 +49,65 @@ translate = function (transcript) {
     return actual_script;
 };
 
+back = function(editor) {
+    var selectionRange = editor.getSelectionRange();
+
+    if (selectionRange.isEmpty()) {
+        // Go back and undo the last insertion
+        var last_range = insertions.pop();
+        editor.session.replace(last_range, "");
+    }
+    else {
+        // Undo the current insertion
+        editor.session.replace(selectionRange, "");
+
+        // Clear selection
+        editor.clearSelection();
+    }
+};
+
 insertFinal = function(transcript, editor) {
-    // Get current selection
-    var replaceRange = editor.getSelectionRange();
+    // Cut off reverted results
+    transcript = transcript.slice(cut_transcript);
+    // Check for back
+    if (transcript.endsWith("back")) {
+        back(editor);
+        cut_transcript = 0;
+        return;
+    }
 
-    // Translate selection
-    transcript = translate(transcript);
+    if (cut_transcript < transcript.length) {
+        // Get current selection
+        var replaceRange = editor.getSelectionRange();
 
-    // Insert text into editor
-    editor.session.replace(replaceRange, transcript);
+        // Translate selection
+        transcript = translate(transcript);
 
-    // Deselect text
-    editor.session.selection.clearSelection();
+        // Insert text into editor
+        editor.session.replace(replaceRange, transcript);
+
+        // Add insertion to list of insertions
+        var pos = editor.getCursorPosition();
+        replaceRange.setEnd(pos.row, pos.column);
+        insertions.push(replaceRange);
+
+        // Deselect text
+        editor.session.selection.clearSelection();
+    }
+    // Reset slice
+    cut_transcript = 0;
 };
 
 insertInterim = function(transcript, editor) {
+    // Cut back reverted results
+    transcript = transcript.slice(cut_transcript);
+    // Check for back
+    if (transcript.endsWith("back")) {
+        back(editor);
+        cut_transcript += transcript.length;
+        return;
+    }
+
     // Get current selection
     var initRange = editor.getSelectionRange();
     
