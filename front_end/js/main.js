@@ -1,3 +1,8 @@
+// Ask for permission to use audio
+navigator.getUserMedia({audio: true, video: false},
+    function(stream) {console.log("Got permission");},
+        function(error) {alert("Error!");}
+    );
 
 var editor = ace.edit("editor", {
       theme: "ace/theme/vibrant_ink",
