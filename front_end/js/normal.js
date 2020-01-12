@@ -63,7 +63,8 @@ functions = {
     "select line": function() {editor.selection.selectLine()},
     "deselect": function() {editor.selection.clearSelection()},
     "jump right": function() {editor.selection.moveCursorLongWordRight()},
-    "jump left": function() {editor.selection.moveCursorLongWordLeft()}
+    "jump left": function() {editor.selection.moveCursorLongWordLeft()},
+    "insert": function() { $("#mode").children().not("#"+mode).click(); }
 };
 
 commands = {

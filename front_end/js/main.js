@@ -74,6 +74,14 @@ $(document).ready(function() {
     $("#copy").click(function(event) {
         copyCode();
     });
+
+    $("#normal").change(function(event) {
+        modeToggle();
+    });
+    $("#insert").change(function(event) {
+        modeToggle();
+    });
+
 });
 
 modeToggle = function() {
@@ -86,12 +94,3 @@ modeToggle = function() {
   }
 }
 
-//$("#insert-check").onchange(function(event) {
- //mode = "insert";
- //console.log("insert");
-//});
-
-//$("#normal-check").onchange(function(event) {
-//  mode = "normal";
-//  console.log("normal");
-//})
