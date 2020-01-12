@@ -40,12 +40,34 @@ voiceRecognition.interimResults = true;
 // Callback to process results with
 voiceRecognition.onresult = processStream;
 
-$("#start").click(function(event) {
-    voiceRecognition.start();
-});
+// Copy all of the program's code
+copyCode = function() {
+    var current_selection = editor.session.selection;
+    // Select all
+    editor.selectAll();
 
-$("#stop").click(function(event) {
-    voiceRecognition.stop();
+    // Get text
+    document.execCommand("copy");
+
+    // Return selection
+    editor.session.selection = current_selection;
+
+    console.log("copied!");
+}
+
+
+$(document).ready(function() {
+    $("#start").click(function(event) {
+        voiceRecognition.start();
+    });
+
+    $("#stop").click(function(event) {
+        voiceRecognition.stop();
+    });
+
+    $("#copy").click(function(event) {
+        copyCode();
+    });
 });
 
 modeToggle = function() {

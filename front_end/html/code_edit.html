@@ -37,13 +37,16 @@
         <div class="card-footer bg-secondary">
             <button type="button" class="btn btn-success" id="start">Start</button>
             <button type="button" class="btn btn-danger" id="stop">Stop</button>
-            <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-              <label class="btn btn-info">
-                <input type="radio" name="options" id="option1" autocomplete="off" checked id="insert-check" onchange="modeToggle()">Insert
-              </label>
-              <label class="btn btn-info">
-                <input type="radio" name="options" id="option2" autocomplete="off" id="normal-check" onchange="modeToggle()">Normal
-              </label>
+            <div class="float-right">
+                <button type="button" class="btn btn-success" id="copy">Copy Code</button>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-info">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked id="insert-check" onchange="modeToggle()">Insert
+                  </label>
+                  <label class="btn btn-info">
+                    <input type="radio" name="options" id="option2" autocomplete="off" id="normal-check" onchange="modeToggle()">Normal
+                  </label>
+                </div>
             </div>
         </div>
       </div>
