@@ -10,7 +10,7 @@ normalFinal = function(command, editor) {
       //if ()
     //}
 
-    substitutions = {
+    functions = {
         "go to ending": function() {editor.selection.selectLineEnd()},
         "go to start": function() {editor.selection.moveCursorFileStart()},
         "line ending": function() {editor.navigateLineEnd()},
@@ -30,8 +30,8 @@ normalFinal = function(command, editor) {
         "jump left": function() {editor.selection.moveCursorLongWordLeft()}
     };
 
-    if (command in substitutions)
+    if (command in functions)
     {
-      substitutions[command]();
+      functions[command]();
     }
 };
