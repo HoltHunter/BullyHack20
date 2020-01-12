@@ -37,8 +37,23 @@ voiceRecognition = new recognitionService();
 voiceRecognition.continuous = true;
 voiceRecognition.interimResults = true;
 
+// Specify insert mode grammar
+var insertGrammar = new webkitSpeechGrammarList();
+insertGrammar.addFromString(insertGenerateGrammar(), 1);
+
 // Callback to process results with
 voiceRecognition.onresult = processStream;
+
+// Set grammar
+voiceRecognition.grammars = insertGrammar;
+
+// Set language
+voiceRecognition.lang = 'en=US';
+
+// Set did not recognize
+voiceRecognition.onnomatch = function (event) {
+    console.log("Could not interpret dictation.");
+};
 
 $("#start").click(function(event) {
     voiceRecognition.start();

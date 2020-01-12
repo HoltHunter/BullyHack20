@@ -1,5 +1,6 @@
 substitutions = {
     "space": " ",
+    "tab":"    ",
     "hash": "#",
     "dot": ".",
     "minus": "-",
@@ -28,6 +29,22 @@ substitutions = {
     "begin": "{",
     "end": "}"
 };
+
+insertGenerateGrammar = function () {
+
+    var grammar = "#JSGF V1.0; grammar com.bullyhack.codeeditor;";
+    
+    // Add the substitution words
+    grammar += "<subs> = " + Object.keys(substitutions).join(' | ') + ';';
+
+    // Add the alphabet for spelling words
+    grammar += "<letter> = " + "abcdefghijklmnopqrstuvwxyz".split("").join(" | ") + ';';
+
+    // Add the rule for interpreting insert mode transcripts
+    grammar += "public <insertion> = (/1/ <subs> | /2/ <letter> | /3/ back)+;";
+
+    return grammar;
+}
 
 var insertions = [];
 
