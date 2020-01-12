@@ -8,7 +8,7 @@ var editor = ace.edit("editor", {
 });
 
 // Edit mode
-var mode = "normal";
+var mode = "insert";
 
 processStream = function (event) {
     var rec_result = event.results[event.resultIndex];
@@ -48,7 +48,22 @@ $("#stop").click(function(event) {
     voiceRecognition.stop();
 });
 
-$("#range").click(function(event) {
-    console.log(editor.getSelection().getRange());
+modeToggle = function() {
+  if (mode == "insert"){
+    mode = "normal";
+    console.log("normal");
+  } else {
+    mode = "insert";
+    console.log("insert");
+  }
+}
 
-});
+//$("#insert-check").onchange(function(event) {
+ //mode = "insert";
+ //console.log("insert");
+//});
+
+//$("#normal-check").onchange(function(event) {
+//  mode = "normal";
+//  console.log("normal");
+//})
