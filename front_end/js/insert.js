@@ -103,22 +103,30 @@ insertFinal = function(transcript, editor) {
     }
 
     if (cut_transcript < transcript.length) {
-        // Get current selection
-        var replaceRange = editor.getSelectionRange();
+        console.log(transcript);
+        if (transcript.endsWith("normal mode")) {
+            console.log("normalmode");
+            $("#mode").children().not("#"+mode).click();
+            transcript = transcript.slice(0, transcript.length-11);
+        }
+        if (transcript.length) {
+            // Get current selection
+            var replaceRange = editor.getSelectionRange();
 
-        // Translate selection
-        transcript = translate(transcript);
+            // Translate selection
+            transcript = translate(transcript);
 
-        // Insert text into editor
-        editor.session.replace(replaceRange, transcript);
+            // Insert text into editor
+            editor.session.replace(replaceRange, transcript);
 
-        // Add insertion to list of insertions
-        var pos = editor.getCursorPosition();
-        replaceRange.setEnd(pos.row, pos.column);
-        insertions.push(replaceRange);
+            // Add insertion to list of insertions
+            var pos = editor.getCursorPosition();
+            replaceRange.setEnd(pos.row, pos.column);
+            insertions.push(replaceRange);
 
-        // Deselect text
-        editor.session.selection.clearSelection();
+            // Deselect text
+            editor.session.selection.clearSelection();
+        }
     }
     // Reset slice
     cut_transcript = 0;
