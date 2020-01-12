@@ -8,7 +8,7 @@ var editor = ace.edit("editor", {
 });
 
 // Edit mode
-var mode = "insert";
+var mode = "normal";
 
 processStream = function (event) {
     var rec_result = event.results[event.resultIndex];
@@ -19,6 +19,7 @@ processStream = function (event) {
         console.log("FINAL");
 
         if (mode == "insert") insertFinal(rec_result[0].transcript, editor);
+        if (mode == "normal") normalFinal(rec_result[0].transcript, editor);
     }
     else {
         if (mode == "insert") insertInterim(rec_result[0].transcript, editor);
