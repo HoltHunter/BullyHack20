@@ -44,12 +44,34 @@ translate = function (transcript) {
 };
 
 insertFinal = function(transcript, editor) {
+    // Get current selection
+    var replaceRange = editor.getSelectionRange();
+
+    // Translate selection
     transcript = translate(transcript);
 
-    console.log("Inserting: "+transcript);
-    editor.session.insert(editor.getCursorPosition(), transcript);
+    // Insert text into editor
+    editor.session.replace(replaceRange, transcript);
+
+    // Deselect text
+    editor.session.selection.clearSelection();
 };
 
 insertInterim = function(transcript, editor) {
-    console.log("interim: " + transcript);
+    // Get current selection
+    var initRange = editor.getSelectionRange();
+    
+    // Insert interim
+    editor.session.replace(initRange, translate(transcript));
+
+    // Get cursor position
+    var endPosition = editor.getCursorPosition();
+    
+    // Create range
+    var selectRange = initRange.clone()
+    selectRange.setEnd(endPosition.row, endPosition.column);
+    
+    // Select range
+    editor.session.selection.addRange(selectRange);
+
 };

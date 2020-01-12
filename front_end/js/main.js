@@ -45,3 +45,8 @@ $("#start").click(function(event) {
 $("#stop").click(function(event) {
     voiceRecognition.stop();
 });
+
+$("#range").click(function(event) {
+    console.log(editor.getSelection().getRange());
+
+});
