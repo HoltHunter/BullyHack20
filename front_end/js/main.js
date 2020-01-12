@@ -63,18 +63,25 @@ copyCode = function() {
 $(document).ready(function() {
     const start =  document.querySelector('#start')
     const stop =  document.querySelector('#stop')
+    const wave = document.querySelector('#wave-wrapper')
     $("#start").click(function(event) {
         voiceRecognition.start();
         start.classList.add('animated', 'pulse', 'infinite');
         stop.classList.remove('invisible', 'zoomOut');
         stop.classList.add('animated', 'zoomIn');
+        wave.classList.remove('invisible');
+        wave.classList.add('animated', 'zoomIn')
     });
+
+
 
     $("#stop").click(function(event) {
         voiceRecognition.stop();
         start.classList.remove('animated', 'pulse', 'infinite');
         stop.classList.remove('zoomIn');
         stop.classList.add('zoomOut');
+        wave.classList.add('invisible');
+        wave.classList.remove('animated', 'zoomIn')
     });
 
     $("#copy").click(function(event) {
@@ -99,4 +106,3 @@ modeToggle = function() {
     console.log("insert");
   }
 }
-

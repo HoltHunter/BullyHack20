@@ -56,12 +56,16 @@ functions = {
     "select all": function() {editor.selectAll()},
     "undo": function() {editor.undo()},
     "redo": function() {editor.redo()},
-    "up": function() {editor.selection.moveCursorUp()},
-    "down": function() {editor.selection.moveCursorDown()},
+    "up": function() {editor.selection.moveCursorUp();
+    editor.centerSelection();},
+    "down": function() {editor.selection.moveCursorDown();
+    editor.centerSelection();},
     "select word": function() {editor.selection.selectWord()},
     "delete": function() {editor.remove()},
     "select line": function() {editor.selection.selectLine()},
-    "deselect": function() {editor.selection.clearSelection()},
+    "deselect": function() {
+      console.log("it should deselect");
+      editor.selection.clearSelection();},
     "jump right": function() {editor.selection.moveCursorLongWordRight()},
     "jump left": function() {editor.selection.moveCursorLongWordLeft()},
     "insert": function() { $("#mode").children().not("#"+mode).click(); }
@@ -75,33 +79,40 @@ commands = {
 
             editor.session.selection.moveCursorTo(number-1, 0, true);
         }
+        editor.centerSelection();
     },
 
     "GoToLineEnd": function(entities) {
         editor.navigateLineEnd();
+        editor.centerSelection();
     },
-    
+
     "GoToBeginning": function(entities) {
         editor.navigateLineStart();
+        editor.centerSelection();
     },
 
     "GoToFileBeginning": function(entities) {
         editor.navigateFileStart();
+        editor.centerSelection();
     },
 
     "GoToFileEnd": function(entities) {
         editor.navigateFileEnd();
+        editor.centerSelection();
     },
 
     "MoveLeftX": function(entities) {
         var number = parseInt(entities[entities.length-1].entity);
 
         editor.selection.moveCursorBy(0, -1*number);
+        editor.centerSelection();
     },
     "MoveRightX": function(entities) {
         var number = parseInt(entities[entities.length - 1].entity);
 
         editor.selection.moveCursorBy(0, number);
+        editor.centerSelection();
     },
 
 };
